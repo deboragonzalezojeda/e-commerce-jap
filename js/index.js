@@ -1,7 +1,3 @@
-function showAlertWarning() {
-    document.getElementById('alert-warning').classList.add('show');
-}
-
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("autos").addEventListener("click", function () {
         localStorage.setItem("catID", 101);
@@ -24,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
             `<a class="nav-link" href="my-profile.html">${storedData.email}</a>`
     }
     if (!sessionStorage.datos) {
-        showAlertWarning();
-        setTimeout(() => {location.href = "login.html";}, 5000)
+        alert('Inicia sesion para continuar');
+        location.href = "login.html";
     }
     else {
         userNavbar();
