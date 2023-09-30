@@ -3,7 +3,7 @@ const URL =
   "https://japceibal.github.io/emercado-api/cats_products/" +
   localStorage.getItem("catID") +
   ".json";
-const storedData = JSON.parse(sessionStorage.datos);
+const storedData = JSON.parse(localStorage.datos);
 const listContainer = document.getElementsByClassName("list-container");
 const btnMinMax = document.getElementById("minMax");
 const btnMaxMin = document.getElementById("maxMin");
@@ -126,7 +126,7 @@ function titulo(items) {
 function showData(dataArray) {
   for (const item of dataArray) {
     listContainer[0].innerHTML += `
-        <div  class="list-group-item list-group-item-action cursor-active">
+        <div  class="list-group-item list-group-item-action cursor-active" onclick = "setProductsId(${item.id})">
                 <div class="row">
                     <div class="col-3">
                     <img src="${item.image}" alt="Imagen del modelo ${item.name}" class="img-thumbnail">
@@ -143,8 +143,8 @@ function showData(dataArray) {
         `;
   }
 }
-function userNavbar() {
-  let usuario = document.getElementById("productsUser");
-  usuario.innerHTML += `<a class="nav-link" href="index.html">${storedData.email}</a>`;
+
+function setProductsId(id){
+     localStorage.setItem("idProd", id);
+     window.location = "product-info.html" 
 }
-userNavbar();
